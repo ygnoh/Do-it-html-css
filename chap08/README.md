@@ -153,3 +153,33 @@ Indexed DB에서 사용하는 몇 가지 용어들은 기존 DB에서 사용하�
 워커는 하나의 쓰레드가 실행되는 동안 백그라운드 쓰레드에서 스크립트를 실행하는 것을 말합니다. 시간이 오래 걸리는 계산 작업 같은 것을 백그라운드에서 실행하면 편리합니다. 워커를 이용하면 '병렬 처리'가 가능하기 때문에 효율성도 높일 수 있습니다.
 
 워커 스레드는 일단 만들어지면 그 순간부터 별도의 환경에서 동작하고 사용자 인터페이스의 간섭도 받지 않습니다. 즉 워커를 비롯한 백그라운드 스레드는 DOM에 전혀 접근할 수 없다는 의미입니다. 부득이하게 DOM을 수정해야 할 경우에는 그 작업을 만든 생성자에게 JS 객체를 메시지 형태로 주고 받습니다.
+
+## 08-6. 지오로케이션 API
+지오로케이션 API는 현재 위치를 알 수 있게 해줍니다.
+
+### 사용자 현재 위치 확인 - getCurrentPosition
+
+### 현재 위치 계속 확인 - watchPosition
+
+### 위치 설명하기
+사용자 위치를 설명할 때는 Position 객체를 사용하는데 다음과 같은 필드가 포함되어 있습니다:
+- timestamp: 위치를 가져올 당시의 시간
+- coords: 위치를 가리키는 nslDOMGeoPositionCoords 객체입니다. 다음 속성들을 가지고 있습니다:
+  - latitude: 위도(degree)
+  - longitude: 경도(degree)
+  - altitude: 표고(meters). 장치가 지원하지 않으면 0으로 표시.
+  - accuracy: 위치 정보 오차(meters)
+  - altitudeAccuracy: 표고 정보 오차(meters). 장치가 지원하지 않으면 0으로 표시.
+  - heading: 진행 방향(degree)
+  - speed: 이동 속도(m/s)
+- address: 주소를 표시하는 nslDOMGeoPositionAddress 객체입니다. 다음 속성들을 가지고 있습니다:
+  - streetNumber: 주소 중 거리 번호
+  - street: 주소 중 거리 이름
+  - premises: 부지
+  - city: 시
+  - county: 주
+  - country: 국가
+  - region: 지방
+  - countryCode: 국가 코드
+  - postalCode: 우편 번호
+  
